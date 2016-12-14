@@ -9,25 +9,23 @@
 #include <stdio.h>
 #include "string.h"
 
-int main(int argc, const char * argv[]) {
+int maxSubArray(int argc, const char * argv[]) {
     void findMax( int A[], int i, int j, int *resultI, int *resultJ, int *sum);
     void bruteForce(int A[], int *i, int *j, int *sum);
-    void findMaxSubArray( int A[], int *i, int *j, int *sum);
     int A[10] = {0};
     int i, j,sum;
     for (i = 0; i < 10; i++) {
         scanf("%d", &A[i]);
     }
-    //findMax( A, 0, 9, &i, &j, &sum);
+    findMax( A, 0, 9, &i, &j, &sum);
     //bruteForce(A, &i, &j, &sum);
-    findMaxSubArray(A, &i, &j, &sum);
     printf("%d %d %d\n", i, j, sum);
     
     return 0;
-
+    
 }
 
-void bruteForce( int A[], int *i, int *j, int *sum) {
+void bruteForce1( int A[], int *i, int *j, int *sum) {
     
     *sum = -100;
     int tempSum ,tempI, tempJ,m ;
@@ -49,7 +47,7 @@ void bruteForce( int A[], int *i, int *j, int *sum) {
     
 }
 
-void findMax( int A[], int i, int j, int *resultI, int *resultJ, int *sum) {
+void findMax1( int A[], int i, int j, int *resultI, int *resultJ, int *sum) {
     void findMidMax( int *, int , int, int *, int *, int , int*);
     int mid, leftI, leftJ,leftSum, rightI, rightJ, rightSum, midI, midJ, midSum;
     if (i == j) {
@@ -83,7 +81,7 @@ void findMax( int A[], int i, int j, int *resultI, int *resultJ, int *sum) {
     
 }
 
-void findMidMax( int A[], int i, int j, int *resultI, int *resultJ, int mid, int *sum) {
+void findMidMax1( int A[], int i, int j, int *resultI, int *resultJ, int mid, int *sum) {
     
     int leftSum = -100, tempI, tempJ,rightSum = -100;;
     int leftTempSum = 0,rightTempSum = 0;
@@ -109,7 +107,7 @@ void findMidMax( int A[], int i, int j, int *resultI, int *resultJ, int mid, int
 }
 
 // non-recursive
-void findMaxSubArray( int A[], int *i, int *j, int *sum) {
+void findMaxSubArray1( int A[], int *i, int *j, int *sum) {
     
     int m,n, tempSum, testI = 0, testJ = 0, oldI, oldJ;
     int testSum, oldSum = 0;
